@@ -63,6 +63,7 @@ class InstaCatTableViewController: UITableViewController {
         let fileNameComponent: String = fileName.substring(to: dotRange.lowerBound)
         let fileExtenstionComponent: String = fileName.substring(from: dotRange.upperBound)
         
+        // 3. Here is where Bundle.main comes into play
         let fileURL: URL? = Bundle.main.url(forResource: fileNameComponent, withExtension: fileExtenstionComponent)
 
         return fileURL
@@ -80,7 +81,7 @@ class InstaCatTableViewController: UITableViewController {
         
         // 1. This time around we'll add a do-catch
         do {
-            let instaCatJSONData = try JSONSerialization.jsonObject(with: jsonData, options: [])
+            let instaCatJSONData: Any = try JSONSerialization.jsonObject(with: jsonData, options: [])
             
             // 2. Cast from Any and check for the "cats" key
             guard let instaCatJSONCasted: [String : AnyObject] = instaCatJSONData as? [String : AnyObject],
