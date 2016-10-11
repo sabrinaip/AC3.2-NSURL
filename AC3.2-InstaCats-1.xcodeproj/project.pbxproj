@@ -14,6 +14,8 @@
 		14CBA2C71DAC3AAC003A33FD /* AC3_2_InstaCats_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CBA2C61DAC3AAC003A33FD /* AC3_2_InstaCats_1Tests.swift */; };
 		14CBA2D31DAC3D72003A33FD /* InstaCatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CBA2D21DAC3D72003A33FD /* InstaCatTableViewController.swift */; };
 		14CBA2D61DAC3FD7003A33FD /* InstaCats.json in Resources */ = {isa = PBXBuildFile; fileRef = 14CBA2D51DAC3FD7003A33FD /* InstaCats.json */; };
+		14CBA2D81DACAD12003A33FD /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 14CBA2D71DACAD12003A33FD /* test.json */; };
+		14CBA2D91DACAFEB003A33FD /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 14CBA2D71DACAD12003A33FD /* test.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,7 @@
 		14CBA2C81DAC3AAC003A33FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14CBA2D21DAC3D72003A33FD /* InstaCatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InstaCatTableViewController.swift; path = "View Controllers/InstaCatTableViewController.swift"; sourceTree = "<group>"; };
 		14CBA2D51DAC3FD7003A33FD /* InstaCats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InstaCats.json; sourceTree = "<group>"; };
+		14CBA2D71DACAD12003A33FD /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				14CBA2C61DAC3AAC003A33FD /* AC3_2_InstaCats_1Tests.swift */,
+				14CBA2D71DACAD12003A33FD /* test.json */,
 				14CBA2C81DAC3AAC003A33FD /* Info.plist */,
 			);
 			path = "AC3.2-InstaCats-1Tests";
@@ -202,6 +206,7 @@
 			files = (
 				14CBA2D61DAC3FD7003A33FD /* InstaCats.json in Resources */,
 				14CBA2BC1DAC3AAB003A33FD /* LaunchScreen.storyboard in Resources */,
+				14CBA2D91DACAFEB003A33FD /* test.json in Resources */,
 				14CBA2B91DAC3AAB003A33FD /* Assets.xcassets in Resources */,
 				14CBA2B71DAC3AAB003A33FD /* Main.storyboard in Resources */,
 			);
@@ -211,6 +216,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14CBA2D81DACAD12003A33FD /* test.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

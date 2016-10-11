@@ -11,6 +11,12 @@ import XCTest
 
 class AC3_2_InstaCats_1Tests: XCTestCase {
     
+    let testInstaCatTableVC: InstaCatTableViewController = InstaCatTableViewController()
+    
+    let testName: String = "Insta Cat"
+    let testID: Int = 99999
+    let testURL: URL = URL(string: "http://www.google.com")!
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -21,16 +27,48 @@ class AC3_2_InstaCats_1Tests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testInitializerOfInstaCat() {
+        let testInstaCat: InstaCat = InstaCat(name: testName, id: testID, instagramURL: testURL)
+        
+        XCTAssertTrue(testInstaCat.name == testName)
+        XCTAssertTrue(testInstaCat.catID == testID)
+        XCTAssertTrue(testInstaCat.instagramURL == testURL)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testValidInstaCatDescription() {
+        let testInstaCat: InstaCat = InstaCat(name: testName, id: testID, instagramURL: testURL)
+        let expectedDescription: String = "Nice to me you, I'm \(testName)"
+        
+        XCTAssertTrue(testInstaCat.description == expectedDescription)
     }
     
+    func testGetResourceURLFromFilename() {
+        let testFileName: String = "test.json"
+        let testFileURL = testInstaCatTableVC.getResourceURL(from: testFileName)
+        XCTAssertNotNil(testFileURL, "getResourceURL(from:) should return a non-nil URL for a valid file")
+        
+        let invalidFileName: String = "testing.json"
+        let invalidTestFileURL = testInstaCatTableVC.getResourceURL(from: invalidFileName)
+        let helperResult = runHelper(for: "testing.json", expectedOutput: URL.self, using: testInstaCatTableVC.getResourceURL(from:))
+        
+        XCTAssertNil(invalidTestFileURL, "getResourceURL(from:) should return nil for a file that does not exist")
+        
+        let malformedFileName: String = "testedjson"
+        let malformedFileURL = testInstaCatTableVC.getResourceURL(from: malformedFileName)
+        XCTAssertNil(malformedFileURL, "getResourceURL(from:) should return nil for an improperly formatted filename parameter")
+        
+    }
+    
+    func testGetDataFromURL() {
+        let testFileName: String = "test.json"
+        let testFileURL = testInstaCatTableVC.getResourceURL(from: testFileName)
+        let testData = testInstaCatTableVC.getData(from: testFileURL!)
+        
+        XCTAssertNotNil(testData, "getData(from:) should return a non-nil URL for a valid file")
+    }
+    
+    // MARK: - Test Helpers
+    private func runHelper<U, T>(for input: U, expectedOutput: T.Type, using function: ((U) -> T?)) -> T? {
+        return function(input)
+    }
 }
