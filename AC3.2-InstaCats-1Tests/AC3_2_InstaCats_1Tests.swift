@@ -17,6 +17,10 @@ class AC3_2_InstaCats_1Tests: XCTestCase {
     let testID: Int = 99999
     let testURL: URL = URL(string: "http://www.google.com")!
     
+    let testFileName: String = "test.json"
+    let invalidFileName: String = "testing.json"
+    let malformedFileName: String = "testedjson"
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -49,8 +53,6 @@ class AC3_2_InstaCats_1Tests: XCTestCase {
         
         let invalidFileName: String = "testing.json"
         let invalidTestFileURL = testInstaCatTableVC.getResourceURL(from: invalidFileName)
-        let helperResult = runHelper(for: "testing.json", expectedOutput: URL.self, using: testInstaCatTableVC.getResourceURL(from:))
-        
         XCTAssertNil(invalidTestFileURL, "getResourceURL(from:) should return nil for a file that does not exist")
         
         let malformedFileName: String = "testedjson"
@@ -60,15 +62,24 @@ class AC3_2_InstaCats_1Tests: XCTestCase {
     }
     
     func testGetDataFromURL() {
-        let testFileName: String = "test.json"
         let testFileURL = testInstaCatTableVC.getResourceURL(from: testFileName)
         let testData = testInstaCatTableVC.getData(from: testFileURL!)
-        
         XCTAssertNotNil(testData, "getData(from:) should return a non-nil URL for a valid file")
     }
     
-    // MARK: - Test Helpers
-    private func runHelper<U, T>(for input: U, expectedOutput: T.Type, using function: ((U) -> T?)) -> T? {
-        return function(input)
+    func testGettingInstaCatsFromData() {
+        guard let testFileURL = testInstaCatTableVC.getResourceURL(from: testFileName),
+            let testFileData = testInstaCatTableVC.getData(from: testFileURL),
+            let testFileInstaCats = testInstaCatTableVC.getInstaCats(from: testFileData)
+        else {
+            XCTFail()
+            return
+        }
+        
+        XCTAssertTrue(testFileInstaCats.count == 3)
+        XCTAssertTrue(testFileInstaCats[0].name == "Nala Cat")
+        XCTAssertTrue(testFileInstaCats[1].catID == 002)
+        XCTAssertTrue(testFileInstaCats[2].instagramURL == URL(string: "https://www.instagram.com/grump_cat_/?hl=en"))
     }
+
 }
