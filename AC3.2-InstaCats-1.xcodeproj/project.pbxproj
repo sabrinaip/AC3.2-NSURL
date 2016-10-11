@@ -65,7 +65,9 @@
 				14CBA2C51DAC3AAC003A33FD /* AC3.2-InstaCats-1Tests */,
 				14CBA2AF1DAC3AAB003A33FD /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		14CBA2AF1DAC3AAB003A33FD /* Products */ = {
 			isa = PBXGroup;
