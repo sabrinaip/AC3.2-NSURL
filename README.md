@@ -113,13 +113,6 @@ Using the tests provided and following snippet of code (with hints), finish out 
 
 #### InstaCat Model:
 ```swift
-struct InstaCat {
-  // fill out necessary ivars and initilizations
-  // check the tests to know what you should have
-}
-```
-
-```swift
       internal func getInstaCats(from jsonData: Data) -> [InstaCat]? {
         
         // 1. This time around we'll add a do-catch
@@ -140,3 +133,6 @@ struct InstaCat {
         return  nil
     }
 ```
+
+#### Final Product:
+![Filling in the tableview](http://i.imgur.com/190RsUZm.png)
