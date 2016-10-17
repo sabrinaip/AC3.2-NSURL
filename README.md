@@ -63,7 +63,7 @@ And now, in `viewDidLoad`, we can add all of the following, even if we haven't f
   
   ```swift 
           guard let instaCatsURL: URL = self.getResourceURL(from: instaCatJSONFileName),
-            let instaCatData: NSData = self.getData(from: instaCatsURL),
+            let instaCatData: Data = self.getData(from: instaCatsURL), // sorry, this should be Data, not NSData!
             let instaCatsAll: [InstaCat] = self.getInstaCats(from: instaCatData) else {
                 return
           }
